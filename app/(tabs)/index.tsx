@@ -17,6 +17,16 @@ export default function TabOneScreen() {
         <Image source={require('../../assets/images/wheat.png')} style={styles.wheatImage} />
       </MotiView>
 
+      <View style={styles.aswannaContainer}>
+                  <MotiView
+                    from={{ opacity: 0, translateY: -20 }}
+                    animate={{ opacity: 1, translateY: 0 }}
+                    transition={{ type: 'timing', duration: 600 }}
+                  >
+                    <Text style={styles.aswannaContainer}>ASWANNA</Text>
+                  </MotiView>
+                  </View>
+
       {/* Person Image in the Middle */}
       <MotiView
         from={{ opacity: 0, scale: 0.8 }}
@@ -89,18 +99,33 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     transform: [{ rotate: '35deg' }], // Rotates the image
   },
+
+  aswannaContainer:{
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'rgb(227, 163, 98)', // Set text color to brown
+    marginTop:110,
+    textAlign: 'center',
+    transform: [{ rotate: '135deg' }], // Rotates text by 90 degrees
+    position: 'absolute', // Allows manual positioning
+    right: 18, // Moves text to the right side
+  },
+
   personImageContainer: {
-    justifyContent: 'center', // Centers vertically
-    alignItems: 'center', // Centers horizontally
-    width: '100%', // Ensures full width for centering
+    justifyContent: 'center',
+    alignItems: 'center',
+    overflow: 'hidden', // Ensures cropping effect
+    width: 250, // Reduce width to crop more of the right side
+    height: 150, // Match the image height
   },
   personImage: {
-    width: 150,
+    width: 150, // Keeps original width (causes right side crop)
     height: 150,
-    resizeMode: 'contain',
-    marginBottom: 10, // Adds spacing below the image
+    resizeMode: 'cover',
+    marginLeft: 85, // Moves the image left to keep the face centered
   },
   title: {
+    fontFamily: 'serif',
     fontSize: 22,
     fontWeight: 'bold',
     color: '#333',
@@ -120,7 +145,7 @@ const styles = StyleSheet.create({
     width: '100%', // Ensures the button container spans the full width
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: 'rgb(139, 226, 99)',
     paddingVertical: 10, // Smaller height
     paddingHorizontal: 60, // Smaller width
     borderRadius: 25,
