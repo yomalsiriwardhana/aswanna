@@ -7,8 +7,6 @@ export default function TabOneScreen() {
   const router = useRouter();
 
   return (
-
-    
     <View style={styles.container}>
       {/* Wheat Image at the Top */}
       <MotiView
@@ -25,49 +23,55 @@ export default function TabOneScreen() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ type: 'spring', damping: 8 }}
       >
-        <Image source={require('../../assets/images/person.png')} style={styles.personImage} />
+        <View style={styles.personImageContainer}>
+          <Image source={require('../../assets/images/person.png')} style={styles.personImage} />
+        </View>
       </MotiView>
 
       {/* Title Text */}
-      <MotiText 
-        style={styles.title} 
-        from={{ opacity: 0, translateY: 20 }} 
-        animate={{ opacity: 1, translateY: 0 }} 
+      <MotiText
+        style={styles.title}
+        from={{ opacity: 0, translateY: 20 }}
+        animate={{ opacity: 1, translateY: 0 }}
         transition={{ type: 'timing', duration: 500 }}
       >
         The platform to sell your harvest
       </MotiText>
 
       {/* Description */}
-      <MotiText 
-        style={styles.description} 
-        from={{ opacity: 0, translateY: 20 }} 
-        animate={{ opacity: 1, translateY: 0 }} 
+      <MotiText
+        style={styles.description}
+        from={{ opacity: 0, translateY: 20 }}
+        animate={{ opacity: 1, translateY: 0 }}
         transition={{ type: 'timing', duration: 700 }}
       >
-        A platform enabling farmers to sell their harvest directly, ensuring fair pricing, 
-        and promoting efficient, transparent, and profitable agricultural trade.
+        A platform enabling farmers to sell their harvest directly, ensuring fair pricing, and promoting efficient, transparent, and profitable agricultural trade.
       </MotiText>
 
-      {/* Start Button */}
-      <MotiView 
-        from={{ scale: 0.9, opacity: 0 }} 
-        animate={{ scale: 1, opacity: 1 }} 
-        transition={{ type: 'spring', damping: 8 }}
-      >
-        <TouchableOpacity style={styles.button} onPress={() => router.push('/start')}>
-          <Text style={styles.buttonText}>Start</Text>
-        </TouchableOpacity>
-      </MotiView>
+      {/* Start Button Container */}
+      <View style={styles.buttonContainer}>
+        <MotiView
+          from={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ type: 'spring', damping: 8 }}
+        >
+          <TouchableOpacity style={styles.button} onPress={() => router.push('/start')}>
+            <Text style={styles.buttonText}>START</Text>
+          </TouchableOpacity>
+        </MotiView>
+      </View>
 
       {/* Fruits Basket Image at the Bottom */}
-      <MotiView 
-        from={{ opacity: 0, translateY: 20 }} 
-        animate={{ opacity: 1, translateY: 0 }} 
+      <View style={styles.fruitsImageContainer}>
+      <MotiView
+        from={{ opacity: 0, translateY: 20 }}
+        animate={{ opacity: 1, translateY: 0 }}
         transition={{ type: 'timing', duration: 800 }}
       >
         <Image source={require('../../assets/images/fruits-basket.png')} style={styles.fruitsImage} />
       </MotiView>
+      </View>
+
     </View>
   );
 }
@@ -75,28 +79,33 @@ export default function TabOneScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'space-between',
     backgroundColor: '#f8f9fa',
-    paddingHorizontal: 20,
-    paddingVertical: 40,
+    justifyContent: 'center', // Centers the content vertically
+    
   },
   wheatImage: {
-    width: 150,
-    height: 120,
+    width: 250,
+    height: 220,
     resizeMode: 'contain',
+    transform: [{ rotate: '35deg' }], // Rotates the image
+  },
+  personImageContainer: {
+    justifyContent: 'center', // Centers vertically
+    alignItems: 'center', // Centers horizontally
+    width: '100%', // Ensures full width for centering
   },
   personImage: {
     width: 150,
     height: 150,
     resizeMode: 'contain',
-    marginBottom: 10,
+    marginBottom: 10, // Adds spacing below the image
   },
   title: {
     fontSize: 22,
     fontWeight: 'bold',
     color: '#333',
     textAlign: 'center',
+    marginBottom: 10, // Add space below title
   },
   description: {
     fontSize: 14,
@@ -105,25 +114,39 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     marginBottom: 15,
   },
+  buttonContainer: {
+    justifyContent: 'center', // Centering button horizontally
+    alignItems: 'center', // Centering button vertically
+    width: '100%', // Ensures the button container spans the full width
+  },
   button: {
     backgroundColor: '#4CAF50',
-    paddingVertical: 12,
-    paddingHorizontal: 40,
+    paddingVertical: 10, // Smaller height
+    paddingHorizontal: 60, // Smaller width
     borderRadius: 25,
     shadowColor: '#000',
     shadowOpacity: 0.2,
     shadowRadius: 4,
     elevation: 4,
+    marginTop: 20, // Space above the button
   },
   buttonText: {
-    fontSize: 18,
+    fontSize: 18, // Optional: adjust font size for better appearance
     fontWeight: 'bold',
     color: '#fff',
   },
-  fruitsImage: {
-    width: 140,
-    height: 140,
-    resizeMode: 'contain',
-    marginTop: 20,
+
+  fruitsImageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '120%',
   },
+  fruitsImage: {
+    width: 170,
+    height: 170,
+    resizeMode: 'contain',
+    marginTop:-30,
+    
+  },
+
 });
