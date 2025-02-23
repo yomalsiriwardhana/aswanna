@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Image} from 'react-native';
 import { Picker } from '@react-native-picker/picker';
 import { useRouter } from 'expo-router';
+import { MotiView, MotiText } from 'moti';
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -25,6 +26,25 @@ export default function RegisterPage() {
 
   return (
     <View style={styles.container}>
+        <View  style={styles.wheatImageContainer}>
+                      <MotiView
+                        from={{ opacity: 0, translateY: -20 }}
+                        animate={{ opacity: 1, translateY: 0 }}
+                        transition={{ type: 'timing', duration: 600 }}
+                      >
+                        <Image source={require('../../assets/images/wheat.png')} style={styles.wheatImage} />
+                      </MotiView>
+                      </View>
+                        
+                        <View style={styles.aswannaContainer}>
+                            <MotiView
+                              from={{ opacity: 0, translateY: -20 }}
+                              animate={{ opacity: 1, translateY: 0 }}
+                              transition={{ type: 'timing', duration: 600 }}
+                            >
+                              <Text style={styles.aswannaContainer}>ASWANNA</Text>
+                            </MotiView>
+                        </View>
       <Text style={styles.title}>Register</Text>
 
       <TextInput 
@@ -102,7 +122,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
     paddingHorizontal: 20,
   },
+
+  wheatImageContainer:{
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '45%',
+  },
+
+  wheatImage: {
+    width: 250,
+    height: 220,
+    resizeMode: 'contain',
+    transform: [{ rotate: '35deg' }], // Rotates the image
+  },
+  aswannaContainer:{
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'rgb(227, 163, 98)', // Set text color to brown
+    marginTop:110,
+    textAlign: 'center',
+    transform: [{ rotate: '135deg' }], // Rotates text by 90 degrees
+    position: 'absolute', // Allows manual positioning
+    right: 18, // Moves text to the right side
+  },
   title: {
+    marginTop: -150,
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
@@ -135,7 +179,7 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor: 'rgb(139, 226, 99)',
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 25,

@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert } from 'react-native';
+import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, Image } from 'react-native';
 import { useRouter } from 'expo-router';
+import { MotiView, MotiText } from 'moti';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -31,6 +32,24 @@ export default function LoginPage() {
 
   return (
     <View style={styles.container}>
+        <View  style={styles.wheatImageContainer}>
+              <MotiView
+                from={{ opacity: 0, translateY: -20 }}
+                animate={{ opacity: 1, translateY: 0 }}
+                transition={{ type: 'timing', duration: 600 }}
+              >
+                <Image source={require('../../assets/images/wheat.png')} style={styles.wheatImage} />
+              </MotiView></View>
+                
+                <View style={styles.aswannaContainer}>
+                    <MotiView
+                      from={{ opacity: 0, translateY: -20 }}
+                      animate={{ opacity: 1, translateY: 0 }}
+                      transition={{ type: 'timing', duration: 600 }}
+                    >
+                      <Text style={styles.aswannaContainer}>ASWANNA</Text>
+                    </MotiView>
+                </View>
       <Text style={styles.title}>Login</Text>
 
       <TextInput
@@ -57,6 +76,15 @@ export default function LoginPage() {
       <TouchableOpacity onPress={() => router.push('/register')}>
         <Text style={styles.link}>Don't have an account? Register</Text>
       </TouchableOpacity>
+      <View style={styles. fruitsImageContainer}>
+      <MotiView
+              from={{ opacity: 0, translateY: 20 }}
+              animate={{ opacity: 1, translateY: 0 }}
+              transition={{ type: 'timing', duration: 800 }}
+            >
+              <Image source={require('../../assets/images/fruits-basket.png')} style={styles.fruitsImage} />
+            </MotiView>
+        </View>
     </View>
   );
 }
@@ -69,7 +97,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#f8f9fa',
     paddingHorizontal: 20,
   },
+
+  wheatImageContainer:{
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '45%',
+  },
+
+  wheatImage: {
+    width: 250,
+    height: 220,
+    resizeMode: 'contain',
+    transform: [{ rotate: '35deg' }], // Rotates the image
+  },
+  aswannaContainer:{
+    fontSize: 50,
+    fontWeight: 'bold',
+    color: 'rgb(227, 163, 98)', // Set text color to brown
+    marginTop:110,
+    textAlign: 'center',
+    transform: [{ rotate: '135deg' }], // Rotates text by 90 degrees
+    position: 'absolute', // Allows manual positioning
+    right: 18, // Moves text to the right side
+  },
   title: {
+    fontFamily: 'serif',
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
@@ -85,7 +137,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   button: {
-    backgroundColor: '#4CAF50',
+    backgroundColor:'rgb(139, 226, 99)',
     paddingVertical: 12,
     paddingHorizontal: 40,
     borderRadius: 25,
@@ -102,5 +154,17 @@ const styles = StyleSheet.create({
     marginTop: 10,
     color: '#007bff',
     textDecorationLine: 'underline',
+  },
+
+  fruitsImageContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    width: '160%',
+  },
+  fruitsImage: {
+    width: 170,
+    height: 170,
+    resizeMode: 'contain',
+    marginTop:-30,
   },
 });

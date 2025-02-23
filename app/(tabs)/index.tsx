@@ -9,6 +9,7 @@ export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       {/* Wheat Image at the Top */}
+      <View></View>
       <MotiView
         from={{ opacity: 0, translateY: -20 }}
         animate={{ opacity: 1, translateY: 0 }}
@@ -27,13 +28,13 @@ export default function TabOneScreen() {
                   </MotiView>
                   </View>
 
-      {/* Person Image in the Middle */}
-      <MotiView
-        from={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ type: 'spring', damping: 8 }}
-      >
-        <View style={styles.personImageContainer}>
+                {/* Person Image in the Middle */}
+                <MotiView
+                  from={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ type: 'spring', damping: 8 }}
+                >
+                  <View style={styles.personImageContainer}>
           <Image source={require('../../assets/images/person.png')} style={styles.personImage} />
         </View>
       </MotiView>
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
     marginBottom: 10, // Add space below title
   },
   description: {
-    fontSize: 14,
+    fontSize: 12,
     color: '#555',
     textAlign: 'center',
     paddingHorizontal: 20,
